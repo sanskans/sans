@@ -49,6 +49,12 @@ const config: Config = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
+  			},
+  			asu: {
+  				maroon: 'hsl(var(--asu-maroon))',
+  				gold: 'hsl(var(--asu-gold))',
+  				black: 'hsl(var(--asu-black))',
+  				white: 'hsl(var(--asu-white))'
   			}
   		},
   		borderRadius: {

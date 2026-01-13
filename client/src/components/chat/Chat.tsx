@@ -17,7 +17,7 @@ const INITIAL_MESSAGE: Message = {
   id: generateId(),
   role: "assistant",
   content:
-    "Hello! I'm your **ASU enrollment data assistant**. I can help you query student enrollment information from **Fall 2012** through **Fall 2025**.\n\nJust tell me what you'd like to know - for example:\n- How many students were enrolled in Fall 2024?\n- Show me graduate enrollment trends",
+    "Hello! I'm **ASU FactFinder**, your enrollment data assistant. I can help you query student enrollment information from **Fall 2012** through **Fall 2025**.\n\nJust tell me what you'd like to know - for example:\n- How many students were enrolled in Fall 2024?\n- Show me graduate enrollment trends",
   timestamp: new Date(),
 };
 
@@ -233,11 +233,13 @@ export const Chat = () => {
   return (
     <div className="flex flex-col h-full w-full max-w-3xl mx-auto bg-background border rounded-lg sm:rounded-xl shadow-sm">
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3 sm:px-6 sm:py-4 border-b">
-        <h1 className="text-base sm:text-lg font-semibold">
-          ASU Enrollment Assistant
-        </h1>
-        <span className="text-xs sm:text-sm text-muted-foreground">
+      <div className="flex items-center justify-between px-4 py-3 sm:px-6 sm:py-4 border-b bg-asu-maroon">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <h1 className="text-base sm:text-lg font-bold text-white">
+            ASU FactFinder
+          </h1>
+        </div>
+        <span className="text-xs sm:text-sm text-white font-bold">
           {messages.length} messages
         </span>
       </div>
@@ -280,7 +282,7 @@ export const Chat = () => {
       <div className="p-3 sm:p-4 border-t">
         {isConfirmed ? (
           <div className="flex flex-col items-center gap-3">
-            <div className="flex items-center gap-2 text-sm text-green-600 dark:text-green-400">
+            <div className="flex items-center gap-2 text-sm text-foreground">
               <CheckCircle2 className="h-4 w-4" />
               <span>Query complete!</span>
             </div>
@@ -299,7 +301,7 @@ export const Chat = () => {
               <Button
                 onClick={() => handleConfirmationResponse("yes")}
                 disabled={isLoading}
-                className="flex-1 sm:flex-none bg-green-600 hover:bg-green-700"
+                className="flex-1 sm:flex-none bg-asu-gold hover:bg-asu-gold/90 text-asu-black"
               >
                 {isLoading ? (
                   <Loader2 className="h-4 w-4 animate-spin mr-2" />

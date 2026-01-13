@@ -1,8 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Bot, User } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { User } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { Message } from "./types";
@@ -21,18 +21,25 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
         isUser ? "flex-row-reverse" : "flex-row"
       )}
     >
-      <Avatar className="h-8 w-8 sm:h-10 sm:w-10 shrink-0">
+      <Avatar className="h-10 w-10 sm:h-12 sm:w-12 shrink-0">
+        {!isUser && (
+          <AvatarImage
+            src="/fork.png"
+            alt="ASU"
+            className="object-contain p-2 sm:p-2.5"
+          />
+        )}
         <AvatarFallback
           className={cn(
             isUser
               ? "bg-primary text-primary-foreground"
-              : "bg-secondary text-secondary-foreground"
+              : "bg-white"
           )}
         >
           {isUser ? (
-            <User className="h-4 w-4 sm:h-5 sm:w-5" />
+            <User className="h-5 w-5 sm:h-6 sm:w-6" />
           ) : (
-            <Bot className="h-4 w-4 sm:h-5 sm:w-5" />
+            <span className="text-sm font-bold text-asu-maroon">ASU</span>
           )}
         </AvatarFallback>
       </Avatar>
