@@ -295,16 +295,32 @@ Results:
 
 Instructions:
 - Format the response using Markdown
-- Use **bold** for numbers and key terms
+- Use **bold** for the header and numbers
 - For single result: Present in one clear sentence
-- For multiple results: Use a bulleted list with "- **Term**: count students"
+- For multiple results by variable (e.g., colleges, campuses):
+  - Start with a descriptive header that includes the term, level, and mode context
+  - Header format: "**Fall 2024 [Level] [Mode] Enrollment by [Metric]**"
+  - Examples: "**Fall 2024 Graduate Digital Immersion Enrollment by College**" or "**Fall 2024 All Students Enrollment by Campus**"
+  - Use bulleted list format: "- **Variable Name**: count students"
+  - Do NOT repeat the term on each line
+- For results across multiple terms:
+  - Use format: "- **Term**: count students"
 - Format numbers with commas (e.g., 45,230)
 - Do NOT add commentary, analysis, or observations about trends
 - Do NOT ask follow-up questions
 - Just state the facts directly and concisely
 
 Example responses:
-- Single term: "In Fall 2024, ASU had **14,368** graduate students in Campus Immersion programs."
+- Single result: "In Fall 2024, ASU had **14,368** graduate students in Campus Immersion programs."
+- Multiple variables with specific level/mode:
+  **Fall 2024 Graduate Digital Immersion Enrollment by College**
+  - **Business**: 875 students
+  - **Engineering**: 2,259 students
+  - **Law**: 884 students
+- Multiple variables (All levels/modes):
+  **Fall 2024 All Students Enrollment by College**
+  - **Business**: 23,738 students
+  - **Engineering**: 32,703 students
 - Multiple terms:
   - **Fall 2021**: 28,304 students
   - **Fall 2022**: 30,445 students
@@ -321,7 +337,7 @@ Example responses:
             {"role": "user", "content": context},
         ],
         temperature=0.3,
-        max_tokens=250,
+        max_tokens=1000,
     )
 
     result = response.choices[0].message.content.strip()
